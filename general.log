@@ -1,0 +1,35 @@
+/usr/sbin/mysqld, Version: 8.0.46 (MySQL Community Server - GPL). started with:
+Tcp port: 3306  Unix socket: /var/run/mysqld/mysqld.sock
+Time                 Id Command    Argument
+2026-11-05T10:41:15.478438Z	   10 Quit	
+2026-11-05T10:41:28.089219Z	   11 Connect	root@localhost on  using Socket
+2026-11-05T10:41:28.089381Z	   11 Query	select @@version_comment limit 1
+2026-11-05T10:41:28.089623Z	   11 Query	SHOW VARIABLES LIKE 'general_log'
+2026-11-05T10:41:28.090993Z	   11 Quit	
+2026-11-05T10:42:13.101916Z	   12 Connect	root@localhost on  using Socket
+2026-11-05T10:42:13.102134Z	   12 Query	select @@version_comment limit 1
+2026-11-05T10:42:13.102342Z	   12 Query	SHOW VARIABLES LIKE 'general_log'
+2026-11-05T10:42:13.103496Z	   12 Quit	
+2026-11-05T10:42:55.327057Z	   13 Connect	root@localhost on  using Socket
+2026-11-05T10:42:55.327632Z	   13 Query	select @@version_comment limit 1
+2026-11-05T10:43:14.453268Z	   13 Query	SHOW VARIABLES LIKE 'general_log'
+2026-11-05T10:44:38.946277Z	   13 Query	SHOW VARIABLES LIKE 'general_log_file'
+2026-11-05T10:45:02.248054Z	   13 Query	SELECT event_time, command_type, argument
+FROM mysql.general_log
+WHERE user_host LIKE 'root@%'
+ORDER BY event_time DESC
+2026-11-05T10:45:13.446376Z	   13 Query	SELECT event_time, command_type, argument
+FROM mysql.general_log
+WHERE user_host LIKE 'root@%'
+  AND argument NOT LIKE 'SET NAMES%'
+  AND argument NOT LIKE 'SHOW VARIABLES%'
+  AND argument NOT LIKE 'SELECT @@%'
+  AND argument NOT LIKE 'SET SESSION sql_log_off%'
+ORDER BY event_time DESC
+2026-11-05T10:45:24.048934Z	   13 Query	SET SESSION sql_log_off = ON
+2026-11-05T10:55:49.999683Z	   14 Connect	root@localhost on  using Socket
+2026-11-05T10:55:49.999993Z	   14 Connect	Access denied for user 'root'@'localhost' (using password: NO)
+2026-11-05T10:56:20.556084Z	   15 Connect	root@localhost on  using Socket
+2026-11-05T10:56:20.556402Z	   15 Query	select @@version_comment limit 1
+2026-11-05T10:56:20.556726Z	   15 Query	SHOW VARIABLES LIKE 'general_log'
+2026-11-05T10:56:20.558483Z	   15 Quit	
