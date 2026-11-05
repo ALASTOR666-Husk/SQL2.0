@@ -1,35 +1,123 @@
-/usr/sbin/mysqld, Version: 8.0.46 (MySQL Community Server - GPL). started with:
-Tcp port: 3306  Unix socket: /var/run/mysqld/mysqld.sock
-Time                 Id Command    Argument
-2026-11-05T10:41:15.478438Z	   10 Quit	
-2026-11-05T10:41:28.089219Z	   11 Connect	root@localhost on  using Socket
-2026-11-05T10:41:28.089381Z	   11 Query	select @@version_comment limit 1
-2026-11-05T10:41:28.089623Z	   11 Query	SHOW VARIABLES LIKE 'general_log'
-2026-11-05T10:41:28.090993Z	   11 Quit	
-2026-11-05T10:42:13.101916Z	   12 Connect	root@localhost on  using Socket
-2026-11-05T10:42:13.102134Z	   12 Query	select @@version_comment limit 1
-2026-11-05T10:42:13.102342Z	   12 Query	SHOW VARIABLES LIKE 'general_log'
-2026-11-05T10:42:13.103496Z	   12 Quit	
-2026-11-05T10:42:55.327057Z	   13 Connect	root@localhost on  using Socket
-2026-11-05T10:42:55.327632Z	   13 Query	select @@version_comment limit 1
-2026-11-05T10:43:14.453268Z	   13 Query	SHOW VARIABLES LIKE 'general_log'
-2026-11-05T10:44:38.946277Z	   13 Query	SHOW VARIABLES LIKE 'general_log_file'
-2026-11-05T10:45:02.248054Z	   13 Query	SELECT event_time, command_type, argument
-FROM mysql.general_log
-WHERE user_host LIKE 'root@%'
-ORDER BY event_time DESC
-2026-11-05T10:45:13.446376Z	   13 Query	SELECT event_time, command_type, argument
-FROM mysql.general_log
-WHERE user_host LIKE 'root@%'
-  AND argument NOT LIKE 'SET NAMES%'
-  AND argument NOT LIKE 'SHOW VARIABLES%'
-  AND argument NOT LIKE 'SELECT @@%'
-  AND argument NOT LIKE 'SET SESSION sql_log_off%'
-ORDER BY event_time DESC
-2026-11-05T10:45:24.048934Z	   13 Query	SET SESSION sql_log_off = ON
-2026-11-05T10:55:49.999683Z	   14 Connect	root@localhost on  using Socket
-2026-11-05T10:55:49.999993Z	   14 Connect	Access denied for user 'root'@'localhost' (using password: NO)
-2026-11-05T10:56:20.556084Z	   15 Connect	root@localhost on  using Socket
-2026-11-05T10:56:20.556402Z	   15 Query	select @@version_comment limit 1
-2026-11-05T10:56:20.556726Z	   15 Query	SHOW VARIABLES LIKE 'general_log'
-2026-11-05T10:56:20.558483Z	   15 Quit	
+event_time	command_type	argument
+2026-11-05 11:13:33.725932	Query	SELECT * FROM sql_practice.my_actions ORDER BY event_time DESC
+2026-11-05 11:13:33.725663	Query	select @@version_comment limit 1
+2026-11-05 10:44:40.176458	Query	SELECT * FROM customers
+2026-11-05 10:44:40.171436	Query	show tables
+2026-11-05 10:44:40.170841	Query	show databases
+2026-11-05 10:44:37.247554	Query	select @@version_comment limit 1
+2026-11-05 10:44:23.730178	Query	/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */
+2026-11-05 10:44:23.730029	Query	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
+2026-11-05 10:44:23.729848	Query	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */
+2026-11-05 10:44:23.729708	Query	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
+2026-11-05 10:44:23.729590	Query	/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */
+2026-11-05 10:44:23.729459	Query	/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */
+2026-11-05 10:44:23.729302	Query	/*!40101 SET SQL_MODE=@OLD_SQL_MODE */
+2026-11-05 10:44:23.729107	Query	/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */
+2026-11-05 10:44:23.728958	Query	/*!50001 SET collation_connection      = @saved_col_connection */
+2026-11-05 10:44:23.728745	Query	/*!50001 SET character_set_results     = @saved_cs_results */
+2026-11-05 10:44:23.728568	Query	/*!50001 SET character_set_client      = @saved_cs_client */
+2026-11-05 10:44:23.718544	Query	/*!50001 CREATE ALGORITHM=UNDEFINED */\n/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */\n/*!50001 VIEW `my_actions` AS select `mysql`.`general_log`.`event_time` AS `event_time`,`mysql`.`general_log`.`command_type` AS `command_type`,convert(`mysql`.`general_log`.`argument` using utf8mb4) AS `argument` from `mysql`.`general_log` where ((`mysql`.`general_log`.`user_host` like '%root%') and (`mysql`.`general_log`.`command_type` = 'Query') and (not((`mysql`.`general_log`.`argument` like 'SET %'))) and (not((`mysql`.`general_log`.`argument` like 'SHOW %'))) and (not((`mysql`.`general_log`.`argument` like 'SELECT @@%'))) and (not((`mysql`.`general_log`.`argument` like 'SELECT DATABASE()%'))) and (not((`mysql`.`general_log`.`argument` like 'SELECT * FROM my_actions%'))) and (not((`mysql`.`general_log`.`argument` like 'TRUNCATE TABLE mysql.general_log%'))) and (not((`mysql`.`general_log`.`argument` like 'CREATE OR REPLACE VIEW my_actions%')))) */
+2026-11-05 10:44:23.718346	Query	/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */
+2026-11-05 10:44:23.718214	Query	/*!50001 SET character_set_results     = utf8mb4 */
+2026-11-05 10:44:23.718076	Query	/*!50001 SET character_set_client      = utf8mb4 */
+2026-11-05 10:44:23.717957	Query	/*!50001 SET @saved_col_connection     = @@collation_connection */
+2026-11-05 10:44:23.717837	Query	/*!50001 SET @saved_cs_results         = @@character_set_results */
+2026-11-05 10:44:23.717663	Query	/*!50001 SET @saved_cs_client          = @@character_set_client */
+2026-11-05 10:44:23.708374	Query	/*!50001 DROP VIEW IF EXISTS `my_actions`*/
+2026-11-05 10:44:23.708173	Query	UNLOCK TABLES
+2026-11-05 10:44:23.703980	Query	/*!40000 ALTER TABLE `orders` ENABLE KEYS */
+2026-11-05 10:44:23.698665	Query	INSERT INTO `orders` VALUES (1,1,'2026-10-01',1500.00,'paid'),(2,1,'2026-10-05',2300.50,'paid'),(3,2,'2026-10-03',800.00,'new'),(4,3,'2026-10-07',4200.00,'paid'),(5,3,'2026-10-10',1100.00,'cancelled')
+2026-11-05 10:44:23.695774	Query	/*!40000 ALTER TABLE `orders` DISABLE KEYS */
+2026-11-05 10:44:23.695252	Query	LOCK TABLES `orders` WRITE
+2026-11-05 10:44:23.695080	Query	/*!40101 SET character_set_client = @saved_cs_client */
+2026-11-05 10:44:23.497677	Query	CREATE TABLE `orders` (\n  `id` int NOT NULL AUTO_INCREMENT,\n  `customer_id` int NOT NULL,\n  `order_date` date NOT NULL,\n  `amount` decimal(10,2) NOT NULL,\n  `status` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT 'new',\n  PRIMARY KEY (`id`),\n  KEY `customer_id` (`customer_id`),\n  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+2026-11-05 10:44:23.497453	Query	/*!50503 SET character_set_client = utf8mb4 */
+2026-11-05 10:44:23.497292	Query	/*!40101 SET @saved_cs_client     = @@character_set_client */
+2026-11-05 10:44:23.493266	Query	DROP TABLE IF EXISTS `orders`
+2026-11-05 10:44:23.478814	Query	/*!50001 CREATE VIEW `my_actions` AS SELECT \n 1 AS `event_time`,\n 1 AS `command_type`,\n 1 AS `argument`*/
+2026-11-05 10:44:23.478656	Query	/*!50503 SET character_set_client = utf8mb4 */
+2026-11-05 10:44:23.430081	Query	/*!50001 DROP VIEW IF EXISTS `my_actions`*/
+2026-11-05 10:44:23.426530	Query	DROP TABLE IF EXISTS `my_actions`
+2026-11-05 10:44:23.426370	Query	UNLOCK TABLES
+2026-11-05 10:44:23.418497	Query	/*!40000 ALTER TABLE `customers` ENABLE KEYS */
+2026-11-05 10:44:23.362626	Query	INSERT INTO `customers` VALUES (1,'Иван Иванов','ivan@example.com','Москва','2026-11-05 10:41:58'),(2,'Пётр Петров','petr@example.com','Санкт-Петербург','2026-11-05 10:41:58'),(3,'Мария Сидорова','maria@example.com','Москва','2026-11-05 10:41:58'),(4,'Алексей Смирнов','alex@example.com','Екатеринбург','2026-11-05 10:41:58'),(5,'Ольга Кузнецова','olga@example.com','Новосибирск','2026-11-05 10:41:58')
+2026-11-05 10:44:23.358159	Query	/*!40000 ALTER TABLE `customers` DISABLE KEYS */
+2026-11-05 10:44:23.357583	Query	LOCK TABLES `customers` WRITE
+2026-11-05 10:44:23.357410	Query	/*!40101 SET character_set_client = @saved_cs_client */
+2026-11-05 10:44:23.200959	Query	CREATE TABLE `customers` (\n  `id` int NOT NULL AUTO_INCREMENT,\n  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `city` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `email` (`email`)\n) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+2026-11-05 10:44:23.200784	Query	/*!50503 SET character_set_client = utf8mb4 */
+2026-11-05 10:44:23.200609	Query	/*!40101 SET @saved_cs_client     = @@character_set_client */
+2026-11-05 10:44:23.195445	Query	DROP TABLE IF EXISTS `customers`
+2026-11-05 10:44:23.195327	Query	/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */
+2026-11-05 10:44:23.195206	Query	/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */
+2026-11-05 10:44:23.195086	Query	/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */
+2026-11-05 10:44:23.194968	Query	/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */
+2026-11-05 10:44:23.194847	Query	/*!40103 SET TIME_ZONE='+00:00' */
+2026-11-05 10:44:23.194724	Query	/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */
+2026-11-05 10:44:23.194588	Query	/*!50503 SET NAMES utf8mb4 */
+2026-11-05 10:44:23.194467	Query	/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */
+2026-11-05 10:44:23.194346	Query	/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */
+2026-11-05 10:44:23.194208	Query	/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */
+2026-11-05 10:44:23.193920	Query	select @@version_comment limit 1
+2026-11-05 10:44:14.970860	Query	CREATE DATABASE sql_practice CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+2026-11-05 10:44:07.122869	Query	select @@version_comment limit 1
+2026-11-05 10:43:46.763531	Query	DROP DATABASE sql_practice
+2026-11-05 10:43:37.399783	Query	select @@version_comment limit 1
+2026-11-05 10:42:46.096026	Query	SELECT CHECK_OPTION, DEFINER, SECURITY_TYPE,        CHARACTER_SET_CLIENT, COLLATION_CONNECTION FROM information_schema.views WHERE table_name='my_actions' AND table_schema='sql_practice'
+2026-11-05 10:42:46.094907	Query	show tables
+2026-11-05 10:42:46.094701	Query	RELEASE SAVEPOINT sp
+2026-11-05 10:42:46.094562	Query	ROLLBACK TO SAVEPOINT sp
+2026-11-05 10:42:46.094296	Query	SELECT COLUMN_NAME,                       JSON_EXTRACT(HISTOGRAM, '$."number-of-buckets-specified"')                FROM information_schema.COLUMN_STATISTICS                WHERE SCHEMA_NAME = 'sql_practice' AND TABLE_NAME = 'orders'
+2026-11-05 10:42:46.093496	Query	select @@collation_database
+2026-11-05 10:42:46.093206	Query	use `sql_practice`
+2026-11-05 10:42:46.092840	Query	SELECT /*!40001 SQL_NO_CACHE */ * FROM `orders`
+2026-11-05 10:42:46.092343	Query	show fields from `orders`
+2026-11-05 10:42:46.091865	Query	show fields from `orders`
+2026-11-05 10:42:46.091286	Query	show create table `orders`
+2026-11-05 10:42:46.090532	Query	show table status like 'orders'
+2026-11-05 10:42:46.090418	Query	ROLLBACK TO SAVEPOINT sp
+2026-11-05 10:42:46.090134	Query	SELECT COLUMN_NAME,                       JSON_EXTRACT(HISTOGRAM, '$."number-of-buckets-specified"')                FROM information_schema.COLUMN_STATISTICS                WHERE SCHEMA_NAME = 'sql_practice' AND TABLE_NAME = 'my_actions'
+2026-11-05 10:42:46.089417	Query	select @@collation_database
+2026-11-05 10:42:46.089311	Query	use `sql_practice`
+2026-11-05 10:42:46.087844	Query	show create table `my_actions`
+2026-11-05 10:42:46.087093	Query	show table status like 'my\\_actions'
+2026-11-05 10:42:46.086989	Query	ROLLBACK TO SAVEPOINT sp
+2026-11-05 10:42:46.086613	Query	SELECT COLUMN_NAME,                       JSON_EXTRACT(HISTOGRAM, '$."number-of-buckets-specified"')                FROM information_schema.COLUMN_STATISTICS                WHERE SCHEMA_NAME = 'sql_practice' AND TABLE_NAME = 'customers'
+2026-11-05 10:42:46.085628	Query	select @@collation_database
+2026-11-05 10:42:46.085495	Query	use `sql_practice`
+2026-11-05 10:42:46.085082	Query	SELECT /*!40001 SQL_NO_CACHE */ * FROM `customers`
+2026-11-05 10:42:46.084609	Query	show fields from `customers`
+2026-11-05 10:42:46.083929	Query	show fields from `customers`
+2026-11-05 10:42:46.083637	Query	show create table `customers`
+2026-11-05 10:42:46.082902	Query	show table status like 'customers'
+2026-11-05 10:42:46.082363	Query	show tables
+2026-11-05 10:42:46.082247	Query	SAVEPOINT sp
+2026-11-05 10:42:46.080022	Query	SELECT DISTINCT TABLESPACE_NAME, FILE_NAME, LOGFILE_GROUP_NAME, EXTENT_SIZE, INITIAL_SIZE, ENGINE FROM INFORMATION_SCHEMA.FILES WHERE FILE_TYPE = 'DATAFILE' AND TABLESPACE_NAME IN (SELECT DISTINCT TABLESPACE_NAME FROM INFORMATION_SCHEMA.PARTITIONS WHERE TABLE_SCHEMA IN ('sql_practice')) ORDER BY TABLESPACE_NAME, LOGFILE_GROUP_NAME
+2026-11-05 10:42:46.077920	Query	SELECT LOGFILE_GROUP_NAME, FILE_NAME, TOTAL_EXTENTS, INITIAL_SIZE, ENGINE, EXTRA FROM INFORMATION_SCHEMA.FILES WHERE ENGINE = 'ndbcluster' AND FILE_TYPE = 'UNDO LOG' AND FILE_NAME IS NOT NULL AND LOGFILE_GROUP_NAME IS NOT NULL AND LOGFILE_GROUP_NAME IN (SELECT DISTINCT LOGFILE_GROUP_NAME FROM INFORMATION_SCHEMA.FILES WHERE ENGINE = 'ndbcluster' AND FILE_TYPE = 'DATAFILE' AND TABLESPACE_NAME IN (SELECT DISTINCT TABLESPACE_NAME FROM INFORMATION_SCHEMA.PARTITIONS WHERE TABLE_SCHEMA IN ('sql_practice'))) GROUP BY LOGFILE_GROUP_NAME, FILE_NAME, ENGINE, TOTAL_EXTENTS, INITIAL_SIZE ORDER BY LOGFILE_GROUP_NAME
+2026-11-05 10:42:46.077757	Query	UNLOCK TABLES
+2026-11-05 10:42:46.077649	Query	START TRANSACTION /*!40100 WITH CONSISTENT SNAPSHOT */
+2026-11-05 10:42:46.062529	Query	/*!80000 SET SESSION information_schema_stats_expiry=0 */
+2026-11-05 10:42:46.062422	Query	/*!40103 SET TIME_ZONE='+00:00' */
+2026-11-05 10:42:46.062336	Query	/*!40100 SET @@SQL_MODE='' */
+2026-11-05 10:42:27.854815	Query	ALTER TABLE customers DROP COLUMN phone
+2026-11-05 10:42:27.433799	Query	ALTER TABLE customers MODIFY COLUMN phone VARCHAR(30)
+2026-11-05 10:42:27.404866	Query	ALTER TABLE customers ADD COLUMN phone VARCHAR(20)
+2026-11-05 10:42:23.869085	Query	DELETE FROM orders WHERE id = 6
+2026-11-05 10:42:23.389348	Query	UPDATE customers SET city = 'Екатеринбург' WHERE id = 4
+2026-11-05 10:42:18.291074	Query	SELECT city FROM customers WHERE city = 'Москва'\nUNION\nSELECT city FROM customers WHERE city = 'Казань'
+2026-11-05 10:42:17.990626	Query	SELECT name FROM customers WHERE id IN (SELECT customer_id FROM orders WHERE amount > 1000)
+2026-11-05 10:42:13.670252	Query	SELECT c.name, COALESCE(SUM(o.amount), 0) AS total_amount\nFROM customers c LEFT JOIN orders o ON c.id = o.customer_id\nGROUP BY c.id, c.name
+2026-11-05 10:42:13.241525	Query	SELECT c.name, o.order_date, o.amount \nFROM customers c INNER JOIN orders o ON c.id = o.customer_id
+2026-11-05 10:42:09.689647	Query	SELECT customer_id, COUNT(*) AS order_count, SUM(amount) AS total_amount\nFROM orders GROUP BY customer_id HAVING SUM(amount) > 2000
+2026-11-05 10:42:09.389987	Query	SELECT COUNT(*) AS total_orders, SUM(amount) AS total_sum FROM orders
+2026-11-05 10:42:03.859869	Query	SELECT * FROM customers WHERE city IN ('Москва', 'Казань')
+2026-11-05 10:42:03.422265	Query	SELECT * FROM customers WHERE name LIKE 'И%'
+2026-11-05 10:42:03.421072	Query	SELECT * FROM orders WHERE amount > 1000 AND status = 'paid'
+2026-11-05 10:42:03.419871	Query	SELECT * FROM customers WHERE city = 'Москва'
+2026-11-05 10:41:58.977647	Query	INSERT INTO orders (customer_id, order_date, amount, status) VALUES\n  (1, '2026-10-01', 1500.00, 'paid'), (1, '2026-10-05', 2300.50, 'paid'),\n  (2, '2026-10-03', 800.00, 'new'),   (3, '2026-10-07', 4200.00, 'paid'),\n  (3, '2026-10-10', 1100.00, 'cancelled'), (4, '2026-10-12', 950.00, 'new')
+2026-11-05 10:41:58.752779	Query	INSERT INTO customers (name, email, city) VALUES\n  ('Иван Иванов', 'ivan@example.com', 'Москва'),\n  ('Пётр Петров', 'petr@example.com', 'Санкт-Петербург'),\n  ('Мария Сидорова', 'maria@example.com', 'Москва'),\n  ('Алексей Смирнов', 'alex@example.com', 'Казань'),\n  ('Ольга Кузнецова', 'olga@example.com', 'Новосибирск')
+2026-11-05 10:41:53.373119	Query	CREATE TABLE orders (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    customer_id INT NOT NULL,\n    order_date DATE NOT NULL,\n    amount DECIMAL(10, 2) NOT NULL,\n    status VARCHAR(20) DEFAULT 'new',\n    FOREIGN KEY (customer_id) REFERENCES customers(id)\n) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+2026-11-05 10:41:52.772068	Query	CREATE TABLE customers (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    name VARCHAR(100) NOT NULL,\n    email VARCHAR(100) NOT NULL UNIQUE,\n    city VARCHAR(100),\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+2026-11-05 10:41:33.784799	Query	show tables
+2026-11-05 10:41:33.781676	Query	show databases
+2026-11-05 10:41:33.434813	Query	CREATE DATABASE sql_practice CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
